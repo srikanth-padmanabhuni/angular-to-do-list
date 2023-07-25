@@ -1,9 +1,5 @@
 <div class="container">
-    <h4>Edit Todo</h4>
-    <hr/>
-    <div class="form-group">
-        <label class="form-label">Id</label>
-        <input type="text" required="true" [value]="id" class="form-control" readonly/>
+    <div *ngIf="todo">
+        <app-add-todo [todoData]="todo"></app-add-todo>
     </div>
-    <app-add-todo [todoData]="todo"></app-add-todo>
 </div>

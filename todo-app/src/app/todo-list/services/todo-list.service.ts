@@ -23,11 +23,14 @@ export class TodoListService {
   }
 
   editTodo(todo: Todo): void {
+    let ts: Todo[] = [];
     this.todosList.forEach((t: Todo) => {
       if(t.id == todo.id) {
         t = todo;
       }
+      ts.push(t);
     });
+    this.todosList = ts;
     this.todoList.next(this.todosList);
   }
 
@@ -39,7 +42,7 @@ export class TodoListService {
       }
     })
     this.todosList = todos;
-    this.todoList.next(todos);
+    this.todoList.next(this.todosList);
   }
 
   getTodos(): any {

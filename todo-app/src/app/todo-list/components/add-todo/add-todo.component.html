@@ -1,7 +1,12 @@
 <div class="container">
-    <h4>Add Todo</h4>
+    <h4 class="text-center" *ngIf="!todoData">Add Todo</h4>
+    <h4 class="text-center" *ngIf="todoData">Edit Todo</h4>
     <hr/>
-    <form formGroup="todoForm">
+    <form [formGroup]="todoForm">
+        <div class="form-group" *ngIf="todoData">
+            <label class="form-label">Id</label>
+            <input type="text" required="true" [value]="todoData.id" class="form-control" readonly/>
+        </div>
         <div class="form-group" [ngClass]="{error: formSubmitted && !todoFormControls['title'].valid}">
             <label class="form-label">Title</label>
             <input type="text" required="true" formControlName="title" class="form-control"/>
@@ -16,8 +21,11 @@
                 <option *ngFor="let statusOption of statusOptions; let i=index" [value]="statusOption.value">{{statusOption.label}}</option>
             </select>
         </div>
-        <div class="form-group">
-            <button (click)="addTodo()" class="btn btn-lg btn-success" [disabled]="!todoForm.valid">
+        <div class="form-group add-update-btn text-center">
+            <button (click)="addTodo()" *ngIf="todoData && todoData.id" class="btn btn-lg btn-success" [disabled]="!todoForm.valid">
+                Update
+            </button>
+            <button (click)="addTodo()" *ngIf="!todoData" class="btn btn-lg btn-success" [disabled]="!todoForm.valid">
                 Add
             </button>
         </div>

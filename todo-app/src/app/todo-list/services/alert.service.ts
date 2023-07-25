@@ -11,14 +11,17 @@ export class AlertService {
   ) { }
 
   showSuccess(message: string, title: string) {
-    this.toastr.success(message, title);
+    // this.toastr.success(message, title);
+    console.log(message);
   }
 
   showError(message: string, title: string) {
-    this.toastr.error(message, title);
+    // this.toastr.error(message, title);
+    console.error(message);
   }
 
   showInfo(message: string, title: string) {
-    this.toastr.info(message, title);
+  //  this.toastr.info(message, title);
+    console.info(message);
   }
 }

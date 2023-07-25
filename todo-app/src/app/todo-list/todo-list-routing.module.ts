@@ -21,6 +21,10 @@ const routes: Routes = [
       {
         path: 'list',
         component: ListTodoComponent
+      },
+      {
+        path: '*',
+        component: ListTodoComponent
       }
     ]
   }

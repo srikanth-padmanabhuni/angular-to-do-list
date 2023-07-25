@@ -6,7 +6,7 @@ import { TodoListComponent } from './todo-list.component';
 import { AddTodoComponent } from './components/add-todo/add-todo.component';
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
 import { EditTodoComponent } from './components/edit-todo/edit-todo.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +19,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     TodoListRoutingModule,
+    ReactiveFormsModule,
     FormsModule
-  ]
+  ],
+  bootstrap: [AddTodoComponent]
 })
 export class TodoListModule { }

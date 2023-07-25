@@ -1,1 +1,35 @@
-<p>list-todo works!</p>
+<div class="container">
+    <div class="head">
+        <div>
+            <h4 class="text-center">Todos</h4>
+        </div>
+        <div>
+            <button class="btn btn-sm btn-success" (click)="addTodo()"> 
+                Add &nbsp;<i class="bi bi-plus-circle-fill"></i>
+            </button>
+        </div>
+    </div>
+    
+
+    <hr/>
+    <span *ngIf="todosList && todosList.length> 0">
+        <span *ngFor="let todo of todosList">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{todo.title}}</h5>
+                    <p class="card-text">{{todo.description}}</p>
+                    <button (click)="editTodo(todo.id)" class="btn-link btn btn-sm card-link text-primary">
+                        Edit &nbsp;<i class="bi bi-pencil-square"></i>
+                    </button>
+                    <button (click)="deleteTodo(todo.id)" class="btn-link btn btn-sm card-link text-danger">
+                        Delete &nbsp;<i class="bi bi-trash3-fill"></i>
+                    </button>
+                </div>
+            </div>
+        </span>
+    </span>
+
+    <h5 *ngIf="todosList && todosList.length == 0" class="text-center">
+        No Todos Available
+    </h5>
+</div>

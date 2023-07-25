@@ -77,7 +77,7 @@ export class AddTodoComponent implements OnInit {
       return;
     }
 
-    if(this.todoService.isTodoAlreadyAvailable(this.todoForm.get('title')?.value)) {
+    if( !(this.todoData && this.todoData.id) && this.todoService.isTodoAlreadyAvailable(this.todoForm.get('title')?.value)) {
       this.alert.showInfo(`Todo with title ${this.todoForm.get('title')?.value} is already added.`, "Title Already Exists");
       return;
     }
@@ -96,12 +96,11 @@ export class AddTodoComponent implements OnInit {
     }
 
     this.alert.showSuccess("Todo Added Successfully!!!", "Success");
-    this.initFormData();
     this.redirectToList();
   }
 
   redirectToList() {
-    this.router.navigateByUrl('/list');
+    this.router.navigateByUrl('/todo-list/list');
   }
 
 }
